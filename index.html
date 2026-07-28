@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 
+<!-- V70.9 2026-07-28: Brescia als zweite Verona-Alternative; Regenoption für Ferragosto (Tag 5); Statistik-Karte unter "Mehr"; Maps-Links auf echte Navigation (dir statt search) umgestellt; Manifest + Service Worker für Installierbarkeit ergänzt. -->
 <!-- V69.4 LINK-AUDIT 2026-07-20: 14 Link-Vorkommen aktualisiert; 9 Google-Maps-Generatoren geprüft; 148 Adresswerte geprüft. -->
 <!-- V63.4 FINAL: Material Design erhalten; kompakter Start; Dialogaktionen bereinigt.  optimierter Offline-Reiseplan für Famiglia Liebthal -->
 <html lang="de">
@@ -23,7 +24,7 @@
 /* Modul: blueprint-config-v59 */
 window.TRIP_BLUEPRINT=Object.freeze({
  schemaVersion:2,
- buildVersion:"70.8.0",
+ buildVersion:"70.9.0",
  appTitle:"Famiglia Liebthal",
  appSubtitle:"Unser Familienurlaub",
  locale:"de-DE",
@@ -133,8 +134,10 @@ window.TRIP_BLUEPRINT=Object.freeze({
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="no-referrer" name="referrer"/>
-<meta content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'" http-equiv="Content-Security-Policy"/>
-<title>Südtirol Reiseplaner V70.8</title>
+<meta content="#1b1b1b" name="theme-color"/>
+<meta content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; manifest-src 'self'; worker-src 'self'" http-equiv="Content-Security-Policy"/>
+<link href="manifest.webmanifest" rel="manifest"/>
+<title>Südtirol Reiseplaner V70.9</title>
 <style>/* V66.2: CSS consolidated; original cascade order preserved. */
 #st-roadmap .excursion-internal-section > summary,
 #st-roadmap .unified-detail-section > summary{
@@ -6055,14 +6058,14 @@ body.dialog-scroll-locked{overflow:hidden!important}
 <div aria-label="Restaurantfilter" class="food-tag-filter">
 <div class="activity-tag-group">
 <h4>Was macht ihr heute?</h4>
-<div class="activity-tag-chips food-area-tags"><button aria-pressed="true" class="activity-tag food-filter-tag active" data-food-target="food-area" data-food-value="all" type="button">Alle Ziele</button><button aria-pressed="false" class="activity-tag food-filter-tag" data-food-target="food-area" data-food-value="kaltern" type="button">Kaltern, Mendelbahn oder Kalterer See</button><button aria-pressed="false" class="activity-tag food-filter-tag" data-food-target="food-area" data-food-value="eppan" type="button">Montiggler Seen oder Eislöcher</button><button aria-pressed="false" class="activity-tag food-filter-tag" data-food-target="food-area" data-food-value="bozen" type="button">Bozen oder Ritten</button><button aria-pressed="false" class="activity-tag food-filter-tag" data-food-target="food-area" data-food-value="brixen" type="button">Plose oder Brixen</button><button aria-pressed="false" class="activity-tag food-filter-tag" data-food-target="food-area" data-food-value="carezza" type="button">Karersee oder Obereggen</button><button aria-pressed="false" class="activity-tag food-filter-tag" data-food-target="food-area" data-food-value="trento" type="button">Trient oder MUSE</button><button aria-pressed="false" class="activity-tag food-filter-tag" data-food-target="food-area" data-food-value="meran" type="button">Meran, Hafling oder Rainguthof</button><button aria-pressed="false" class="activity-tag food-filter-tag" data-food-target="food-area" data-food-value="verona" type="button">Verona</button><button aria-pressed="false" class="activity-tag food-filter-tag" data-food-target="food-area" data-food-value="malcesine" type="button">Malcesine</button><button aria-pressed="false" class="activity-tag food-filter-tag" data-food-target="food-area" data-food-value="riva" type="button">Varone oder Riva del Garda</button></div>
+<div class="activity-tag-chips food-area-tags"><button aria-pressed="true" class="activity-tag food-filter-tag active" data-food-target="food-area" data-food-value="all" type="button">Alle Ziele</button><button aria-pressed="false" class="activity-tag food-filter-tag" data-food-target="food-area" data-food-value="kaltern" type="button">Kaltern, Mendelbahn oder Kalterer See</button><button aria-pressed="false" class="activity-tag food-filter-tag" data-food-target="food-area" data-food-value="eppan" type="button">Montiggler Seen oder Eislöcher</button><button aria-pressed="false" class="activity-tag food-filter-tag" data-food-target="food-area" data-food-value="bozen" type="button">Bozen oder Ritten</button><button aria-pressed="false" class="activity-tag food-filter-tag" data-food-target="food-area" data-food-value="brixen" type="button">Plose oder Brixen</button><button aria-pressed="false" class="activity-tag food-filter-tag" data-food-target="food-area" data-food-value="carezza" type="button">Karersee oder Obereggen</button><button aria-pressed="false" class="activity-tag food-filter-tag" data-food-target="food-area" data-food-value="trento" type="button">Trient oder MUSE</button><button aria-pressed="false" class="activity-tag food-filter-tag" data-food-target="food-area" data-food-value="meran" type="button">Meran, Hafling oder Rainguthof</button><button aria-pressed="false" class="activity-tag food-filter-tag" data-food-target="food-area" data-food-value="verona" type="button">Verona</button><button aria-pressed="false" class="activity-tag food-filter-tag" data-food-target="food-area" data-food-value="brescia" type="button">Brescia</button><button aria-pressed="false" class="activity-tag food-filter-tag" data-food-target="food-area" data-food-value="malcesine" type="button">Malcesine</button><button aria-pressed="false" class="activity-tag food-filter-tag" data-food-target="food-area" data-food-value="riva" type="button">Varone oder Riva del Garda</button></div>
 </div>
 <div class="activity-tag-group">
 <h4>Wie wollt ihr essen?</h4>
 <div class="activity-tag-chips food-style-tags"><button aria-pressed="true" class="activity-tag food-filter-tag active" data-food-target="food-style" data-food-value="all" type="button">Alle Empfehlungen anzeigen</button><button aria-pressed="false" class="activity-tag food-filter-tag" data-food-target="food-style" data-food-value="budget" type="button">Preiswert und unkompliziert</button><button aria-pressed="false" class="activity-tag food-filter-tag" data-food-target="food-style" data-food-value="highlight" type="button">Ein besonderes Restaurant</button></div>
 </div>
 </div><div aria-live="polite" class="food-filter-status" id="food-filter-status">Alle Ziele · Alle Empfehlungen · alle Restaurants</div>
-<select aria-hidden="true" hidden="" id="food-area" tabindex="-1"><option selected="" value="all">Alle Ziele</option><option value="kaltern">Kaltern, Mendelbahn oder Kalterer See</option><option value="eppan">Montiggler Seen oder Eislöcher</option><option value="bozen">Bozen oder Ritten</option><option value="brixen">Plose oder Brixen</option><option value="carezza">Karersee oder Obereggen</option><option value="trento">Trient oder MUSE</option><option value="meran">Meran, Hafling oder Rainguthof</option><option value="verona">Verona</option><option value="malcesine">Malcesine</option><option value="riva">Varone oder Riva del Garda</option></select>
+<select aria-hidden="true" hidden="" id="food-area" tabindex="-1"><option selected="" value="all">Alle Ziele</option><option value="kaltern">Kaltern, Mendelbahn oder Kalterer See</option><option value="eppan">Montiggler Seen oder Eislöcher</option><option value="bozen">Bozen oder Ritten</option><option value="brixen">Plose oder Brixen</option><option value="carezza">Karersee oder Obereggen</option><option value="trento">Trient oder MUSE</option><option value="meran">Meran, Hafling oder Rainguthof</option><option value="verona">Verona</option><option value="brescia">Brescia</option><option value="malcesine">Malcesine</option><option value="riva">Varone oder Riva del Garda</option></select>
 <select aria-hidden="true" hidden="" id="food-style" tabindex="-1"><option selected="" value="all">Alle Empfehlungen anzeigen</option><option value="budget">Preiswert und unkompliziert</option><option value="highlight">Ein besonderes Restaurant</option></select>
 <div class="config-actions food-actions">
 <button class="btn btn-primary" hidden="" id="food-go" type="button">Restaurants anzeigen</button>
@@ -6194,6 +6197,7 @@ body.dialog-scroll-locked{overflow:hidden!important}
       {id:'brixen',n:4,name:'Brixen',lat:46.716,lon:11.657,kind:'culture',tags:['culture','family'],weather:['sun','hot'],km:'ca. 76 km',detail:'Nach der Plose nur noch 60–90 Minuten Altstadt, Eis und Domplatz; kein weiteres Museum.'},
       {id:'verona',n:6,name:'Verona',lat:45.438,lon:10.992,kind:'culture',tags:['culture','family'],weather:['sun'],km:'ca. 145 km',detail:'16.08. als Ganztag: Arena von außen, Piazza Bra, Piazza delle Erbe, Ponte Pietra und Gelato. Außerhalb der ZTL parken; bei großer Hitze früh starten und lange Mittagspause.'},
       {id:'malcesine',n:6,name:'Malcesine',lat:45.765,lon:10.809,kind:'water',tags:['water','culture','family'],weather:['sun'],km:'ca. 120 km',detail:'Tauschoption statt Verona: hübscher und entspannter mit Kind, aber weniger kulturell bedeutend. Altstadt, Hafen, Burg von außen und Baden; Monte-Baldo-Bahn nur mit frühem Onlineticket.'},
+      {id:'brescia',n:6,name:'Brescia',lat:45.541,lon:10.211,kind:'culture',tags:['culture','family'],weather:['sun','cloud'],km:'ca. 165 km',detail:'Zweite Kultur-Alternative statt Verona: ruhigeres Zentrum mit Piazza della Loggia und Castello. Deutlich weiter als Malcesine – nur bei sehr frühem Start und wenig Interesse an Verona wählen.'},
       {id:'varone',n:10,name:'Varone-Wasserfall',lat:45.911,lon:10.833,kind:'nature',tags:['nature','family'],weather:['hot','rain'],km:'ca. 105 km',detail:'20.08. vormittags: kurzer, eindrucksvoller Wasserfallbesuch; Regenjacken und rutschfeste Schuhe mitnehmen.'},
       {id:'riva',n:10,name:'Riva del Garda',lat:45.889,lon:10.844,kind:'water',tags:['water','culture','family'],weather:['sun','hot'],km:'ca. 102 km',detail:'20.08. nachmittags: Promenade, Spielplatz, Eis und Strand. Nicht noch Malcesine dazupacken – es liegt am gegenüberliegenden Ufer.'}
     ];
@@ -6234,8 +6238,8 @@ body.dialog-scroll-locked{overflow:hidden!important}
       {day:2,intro:'Kurzer Schlossblick ohne Führung, anschließend Weiterfahrt nach Kaltern.',stops:[{time:'Vormittag',title:'Parkplatz P4 Hohenschwangau',address:'Alpseestraße 27, 87645 Schwangau, Deutschland',desc:'Shuttle zum Aussichtspunkt Jugend/Marienbrücke. Außenansicht kostenlos; aktuellen Brückenstatus morgens prüfen.',url:'https://www.hohenschwangau.de/en/nature-surroundings/marys-bridge'},{time:'Nachmittag',title:'Garni Osannahöfl',address:'St. Josef am See 35, 39052 Kaltern, Italien',desc:'Nach dem Check-in Lebensmittel für den Feiertag besorgen.',url:'https://www.kalterersee.com/en/lake-caldaro/caldaro/s-giuseppe-al-lago/hotel/osannahoefl/'}]},
       {day:3,intro:'Ein leichter Bergvormittag; nachmittags könnt ihr zwischen See und Pferdeerlebnis wählen.',stops:[{time:'Vormittag',title:'Mendelbahn Talstation',address:'St. Anton 1, 39052 Kaltern, Italien',desc:'Berg- und Talfahrt, oben höchstens 60–90 Minuten Naturspaziergang.',url:'https://www.kaltern.com/en/the-mendola-cable-car.html'},{time:'Nachmittag A',title:'Gretl am See',address:'St. Josef am See 18, 39052 Kaltern, Italien',desc:'Baden, Eis und frühes Abendessen am See.',url:'https://www.gretlamsee.com/'},{time:'Nachmittag B · vorher anfragen',title:'Pony-/Schnuppertermin in Kaltern',address:'Pferdesportanlage Georgsturm, Oberplanitzing, 39052 Kaltern, Italien',desc:'Bei Reitschule Priska Kelderer ausdrücklich nach einem kurzen Angebot für ein vierjähriges Kind fragen; Alter und Verfügbarkeit vorab bestätigen lassen.',url:'https://www.suedtirolerland.it/de/freizeit-aktiv/weitere-sportarten/pferde-reiten/in-suedtirols-sueden/'},{time:'Familienalternative · reservieren',title:'Pferdekutschenfahrt Tramin',address:'Tourismusverein Tramin, Mindelheimer Straße 10A, 39040 Tramin, Italien',desc:'Gemütliche Fahrt durch Obstgärten und Landschaft. Termin und kindgerechte Teilnahme spätestens am Vortag bestätigen.',url:'https://www.tramin.com/de/kutschenfahrt/'}]},
       {day:4,intro:'Ganztagesausflug: Die Plose ist besonders stark für ein vierjähriges Kind.',stops:[{time:'Vormittag–Nachmittag',title:'Plose Kabinenbahn & WoodyWalk',address:'Seilbahnstraße 17, 39042 St. Andrä bei Brixen, Italien',desc:'Gondel, Spielstationen, Wasserspiele und Hütteneinkehr. Wechselkleidung mitnehmen.',url:'https://www.plose.org/woodywalk/'},{time:'Rückweg',title:'Brixen Domplatz',address:'Domplatz, 39042 Brixen, Italien',desc:'Nur eine kurze Altstadtrunde mit Eis; bei müdem Kind direkt zurückfahren.',url:'https://www.brixen.org'}]},
-      {day:5,intro:'Ferragosto: bewusst lokal bleiben und Stoßzeiten vermeiden.',stops:[{time:'Früh',title:'Kalterer See',address:'St. Josef am See 18, 39052 Kaltern, Italien',desc:'Möglichst vor 10 Uhr baden, danach Hotelgarten und lange Pause.',url:'https://www.kalterersee.com/de/freizeit-aktiv/weitere-wassersportarten/schwimmen/schwimmen-im-kalterer-see/'},{time:'Später Nachmittag',title:'Kaltern Dorf',address:'Marktplatz, 39052 Kaltern, Italien',desc:'Kurzer Spaziergang und reserviertes Abendessen; kleine Geschäfte können geschlossen sein.',url:'https://www.kaltern.com'}]},
-      {day:6,intro:'Malcesine ist für euch die Standardwahl: kürzere Wege, Hafen, Eis und ein entspannteres Tempo mit Kind. Verona bleibt die bewusste Kultur-Alternative.',stops:[{time:'Standard · Ganztag',title:'Malcesine',address:'Piazza Statuto, 37018 Malcesine, Italien',desc:'Altstadt, Hafen, Burgkulisse, Eis, kurzer Spielplatz- oder Badestopp. Früh ankommen und nicht zusätzlich nach Verona fahren.',url:'https://www.visitmalcesine.com/dede'},{time:'Alternative · Ganztag',title:'Verona – Parcheggio Centro',address:'Via Campo Marzo, 3, 37133 Verona, Italien',desc:'Nur wählen, wenn ihr bewusst einen längeren Kulturtag möchtet. Außerhalb der ZTL parken, Arena außen, Piazza delle Erbe, Ponte Pietra und lange Mittagspause.',url:'https://www.visitverona.it/en/'}]},
+      {day:5,intro:'Ferragosto: bewusst lokal bleiben und Stoßzeiten vermeiden.',stops:[{time:'Früh',title:'Kalterer See',address:'St. Josef am See 18, 39052 Kaltern, Italien',desc:'Möglichst vor 10 Uhr baden, danach Hotelgarten und lange Pause.',url:'https://www.kalterersee.com/de/freizeit-aktiv/weitere-wassersportarten/schwimmen/schwimmen-im-kalterer-see/'},{time:'Später Nachmittag',title:'Kaltern Dorf',address:'Marktplatz, 39052 Kaltern, Italien',desc:'Kurzer Spaziergang und reserviertes Abendessen; kleine Geschäfte können geschlossen sein.',url:'https://www.kaltern.com'},{time:'Regenalternative',title:'Kellerei Kaltern – Erlebniswelt',address:'Kellereistraße 12, 39052 Kaltern, Italien',desc:'Überdachte Alternative bei Regen: Vinothek und kurzer Rundgang, danach zeitig ins Hotel. Ötzi/Bozen nur bei genug Zeit tauschen, nicht an einem Feiertag mit vollen Parkhäusern.',url:'https://www.kellereikaltern.com/'}]},
+      {day:6,intro:'Malcesine ist für euch die Standardwahl: kürzere Wege, Hafen, Eis und ein entspannteres Tempo mit Kind. Verona bleibt die bewusste Kultur-Alternative.',stops:[{time:'Standard · Ganztag',title:'Malcesine',address:'Piazza Statuto, 37018 Malcesine, Italien',desc:'Altstadt, Hafen, Burgkulisse, Eis, kurzer Spielplatz- oder Badestopp. Früh ankommen und nicht zusätzlich nach Verona fahren.',url:'https://www.visitmalcesine.com/dede'},{time:'Alternative · Ganztag',title:'Verona – Parcheggio Centro',address:'Via Campo Marzo, 3, 37133 Verona, Italien',desc:'Nur wählen, wenn ihr bewusst einen längeren Kulturtag möchtet. Außerhalb der ZTL parken, Arena außen, Piazza delle Erbe, Ponte Pietra und lange Mittagspause.',url:'https://www.visitverona.it/en/'},{time:'Zweite Alternative · Ganztag',title:'Brescia – Autosilo Centro',address:'Via Solferino 1, 25121 Brescia, Italien',desc:'Nur bei sehr frühem Start: Piazza della Loggia, Piazza del Duomo und Castello von außen. Längste Fahrzeit der drei Optionen; für ein müdes Kind eher ungeeignet.',url:'https://www.visitbrescia.it/'}]},
       {day:7,intro:'Stadt, Museum und der notwendige Vape-Einkauf lassen sich ohne zusätzliche Fernfahrt verbinden.',stops:[{time:'Vormittag',title:'Tiefgarage Bozen Mitte',address:'Josef-Mayr-Nusser-Straße, 39100 Bozen, Italien',desc:'Lauben, Obstmarkt und frühes Mittagessen.',url:'https://www.bolzano-bozen.it'},{time:'Nachmittag',title:'Südtiroler Archäologiemuseum',address:'Museumstraße 43, 39100 Bozen, Italien',desc:'Zeitfenster vorab prüfen; Family-Angebote und Öffnung kurz vor dem Besuch bestätigen.',url:'https://www.iceman.it/de'},{time:'Vor der Rückfahrt',title:'Tabaccheria Kolping – Vape-Einkauf',address:'Largo Adolph Kolping 1/G, 39100 Bozen, Italien',desc:'Führt E-Zigaretten und Zubehör. Für Nikotinshots vorher anrufen und nach „booster di nicotina“ oder „base nicotinata“ fragen; Verfügbarkeit ist nicht garantiert.',url:'https://www.tabaccheriakolping.it/'}]},
       {day:8,intro:'Nur bei guter Fernsicht und spätestens um 08:00 Uhr starten. Der Karersee ist das Hauptziel; Latemar.Natura bleibt bewusst kurz.',stops:[{time:'Früher Vormittag',title:'Karersee Besucherzentrum',address:'Karerseestraße 165, 39056 Welschnofen, Italien',desc:'Kurze Seerunde möglichst vor den großen Besuchergruppen. Bei schlechter Sicht oder Regen mit dem MUSE-Tag tauschen.',url:'https://eggental.com/en/poi/lake-carezza'},{time:'Mittag bis früher Nachmittag',title:'Obereggen – Latemar.Natura',address:'Obereggen 16, 39050 Deutschnofen, Italien',desc:'Nur einen kurzen Abschnitt mit Spiel- und Lernstationen wählen; spätestens nach 60–90 Minuten umkehren und keinen weiteren Programmpunkt ergänzen.',url:'https://latemarium.com/de/routes/detail/latemar-natura/'}]},
       {day:9,intro:'Der beste Regen- oder Hitzetag. Das MUSE ist der klare Schwerpunkt; die Altstadt bleibt eine kurze Ergänzung.',stops:[{time:'Hauptprogramm',title:'MUSE & Maxi Ooh!',address:'Corso del Lavoro e della Scienza 3, 38122 Trento, Italien',desc:'Genügend Zeit für das Museum einplanen und Maxi Ooh! für 0–5 Jahre zum Museumsticket ergänzen.',url:'https://www.muse.it/de/home/besuch-planen/oeffnungszeiten-und-eintrittskarten/'},{time:'Kurz davor oder danach',title:'Trient Zentrum',address:'Piazza Fiera, 38122 Trento, Italien',desc:'Nur Domplatz, wenige Gassen, Eis oder frühes Abendessen; bei müdem Kind direkt zurückfahren.',url:'https://www.visittrentino.info/en/trentino/resorts-towns/trento_md_211'}]},
@@ -6408,6 +6412,10 @@ body.dialog-scroll-locked{overflow:hidden!important}
         {name:'Pizzeria da Salvatore',style:['budget','family'],price:'€–€€',address:'Piazza San Tomaso 6, 37129 Verona',note:'Pizza nahe Ponte Nuovo und Altstadt.'},
         {name:'La Griglia',style:['family'],price:'€€',address:'Via Leoncino 29, 37121 Verona',note:'Zentral nahe der Arena mit breiter italienischer Auswahl.'},
         {name:'Ristorante Maffei',style:['highlight'],price:'€€€',address:'Piazza Erbe 38, 37121 Verona',note:'Historisches Ambiente an der Piazza delle Erbe; reservieren.'}
+      ],
+      brescia:[
+        {name:'Trattoria Rigoletto',style:['budget','family'],price:'€–€€',address:'Via Fratelli Bronzetti 22, 25121 Brescia',note:'Unkomplizierte Trattoria nahe dem Zentrum, gut für eine kurze Mittagspause.'},
+        {name:'Osteria Al Bianchi',style:['highlight'],price:'€€€',address:'Via Gasparo da Salò 32, 25122 Brescia',note:'Traditionsreiche Osteria mit lombardischer Küche; reservieren.'}
       ],
       malcesine:[
         {name:'Paradiso Perduto',style:['family','highlight'],price:'€€',address:'Via Castello 17/19, 37018 Malcesine',note:'Zentrale Einkehr nahe der Burg mit italienischer Küche und besonderem Altstadtambiente.'},
@@ -6624,10 +6632,10 @@ body.dialog-scroll-locked{overflow:hidden!important}
           <div class="suggested-stop-address">${stop.address}</div>
           <div class="suggested-stop-actions">
             <a class="btn btn-primary excursion-external-link"
-               href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(stop.address)}"
+               href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(stop.address)}&travelmode=driving"
                target="_blank" rel="noopener"
                aria-label="${stop.title} in Google Maps extern öffnen">
-              <span>Google Maps</span><span class="external-link-mark" aria-hidden="true">↗</span>
+              <span>Navigation</span><span class="external-link-mark" aria-hidden="true">↗</span>
             </a>
             ${stop.url?`<a class="btn excursion-external-link"
                href="${stop.url}" target="_blank" rel="noopener"
@@ -6642,10 +6650,10 @@ body.dialog-scroll-locked{overflow:hidden!important}
           <strong>${item[0]}: ${item[1]}</strong>
           <span>${item[2]}</span>
           <a class="btn excursion-external-link"
-             href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item[2])}"
+             href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(item[2])}&travelmode=driving"
              target="_blank" rel="noopener"
              aria-label="${item[1]} in Google Maps extern öffnen">
-            <span>Google Maps</span><span class="external-link-mark" aria-hidden="true">↗</span>
+            <span>Navigation</span><span class="external-link-mark" aria-hidden="true">↗</span>
           </a>
         </article>`).join(''):'<p class="text-muted">Für diesen Tag ist keine feste Einkehr hinterlegt.</p>';
 
@@ -6805,7 +6813,7 @@ body.dialog-scroll-locked{overflow:hidden!important}
       3:[['Preiswert(er)','Restaurant & Pizzeria Geier','St. Josef am See 12, 39052 Kaltern'],['Gehoben','Panholzer','St. Josef am See 8, 39052 Kaltern']],
       4:[['Preiswert(er)','Plosestodl','Seilbahnstraße 17, 39042 St. Andrä/Brixen'],['Gehoben','Rossalm','Kreuztal 80, 39042 Brixen']],
       5:[['Preiswert(er)','Goldener Stern','Andreas-Hofer-Straße 28, 39052 Kaltern'],['Gehoben','Seehof Keller','St. Josef am See 60, 39052 Kaltern']],
-      6:[['Preiswert(er)','Pizzeria da Salvatore Verona','Piazza San Tomaso 6, 37129 Verona'],['Gehoben','Ristorante Maffei','Piazza Erbe 38, 37121 Verona'],['Malcesine preiswert(er)','Ristorante Caminetto','Via Gardesana 59, 37018 Malcesine'],['Malcesine gehoben','Vecchia Malcesine','Via Pisort 6, 37018 Malcesine']],
+      6:[['Preiswert(er)','Pizzeria da Salvatore Verona','Piazza San Tomaso 6, 37129 Verona'],['Gehoben','Ristorante Maffei','Piazza Erbe 38, 37121 Verona'],['Malcesine preiswert(er)','Ristorante Caminetto','Via Gardesana 59, 37018 Malcesine'],['Malcesine gehoben','Vecchia Malcesine','Via Pisort 6, 37018 Malcesine'],['Brescia preiswert(er)','Trattoria Rigoletto','Via Fratelli Bronzetti 22, 25121 Brescia'],['Brescia gehoben','Osteria Al Bianchi','Via Gasparo da Salò 32, 25122 Brescia']],
       7:[['Preiswert(er)','Pizzeria Trianon','Via S. Quirino 5, 39100 Bozen'],['Gehoben','Restaurant Laurin','Laurinstraße 4, 39100 Bozen']],
       8:[['Preiswert(er)','Hennenstall','Karerseestraße 134, 39056 Welschnofen'],['Gehoben','Franzin Alm','Via Carezza 151, 39056 Welschnofen']],
       9:[['Preiswert(er)','Forsterbräu Trento','Via Paolo Oss Mazzurana 38, 38122 Trento'],['Gehoben','Scrigno del Duomo','Piazza Duomo 29, 38122 Trento']],
@@ -6818,8 +6826,8 @@ body.dialog-scroll-locked{overflow:hidden!important}
       2:[['Schlossstatus prüfen','Morgens online kontrollieren, ob Shuttle, Aussichtspunkt Jugend und Marienbrücke geöffnet sind.'],['Bargeld bereithalten','Der Shuttle kann beim Fahrer bezahlt werden; Wartezeit einplanen.'],['Einkaufen nach Ankunft','Despar, Bahnhofstraße 36 in Kaltern: Wasser, Obst, Snacks, Käse, Brot und Kinderbedarf kaufen.'],['Mautgerät kontrollieren','Bip&Go korrekt an der Scheibe befestigen; österreichische Vignette separat bereithalten.']],
       3:[['Mendelbahn prüfen','Betrieb und Bergwetter am Morgen kontrollieren.'],['Pferdeoption anfragen','Schnuppertermin oder Tramin-Kutschenfahrt spätestens am Vortag bestätigen lassen.'],['Badetasche mitnehmen','Badesachen, Sonnenhut und Wasser direkt morgens ins Auto legen.'],['Abendessen','Geier als preiswerte Option; Panholzer nur nach Reservierung.']],
       4:[['Bergwetter prüfen','Bei Gewitterneigung Plose gegen Trient/MUSE tauschen.'],['Früh starten','Spätestens gegen 08:00 Uhr ab Kaltern losfahren.'],['Wechselkleidung einpacken','Am WoodyWalk gibt es Wasser- und Spielstationen.'],['Bergbahnticket','Öffnung, Preis und eventuelle Onlinevorteile vor Abfahrt prüfen.']],
-      5:[['Ferragosto-Vorrat','Lebensmittel spätestens am 14.08. einkaufen; kleinere Geschäfte können geschlossen sein.'],['Früh zum See','Möglichst vor 10 Uhr baden und die Hauptandrangzeit meiden.'],['Abendessen reservieren','Für den Feiertag nicht auf spontane Plätze verlassen.'],['Ruhetag lassen','Keine zusätzliche Fernfahrt einplanen.']],
-      6:[['Malcesine als Standard','Nur bei ausdrücklichem Kulturwunsch nach Verona wechseln – niemals beide Orte kombinieren.'],['Früh starten','Malcesine möglichst vor dem stärksten Gardasee-Verkehr erreichen.'],['Kinderpause einplanen','Hafen, Eis und einen kurzen Spielplatz- oder Badestopp als feste Pause nutzen.'],['Verona nur alternativ','Bei Verona außerhalb der ZTL parken und eine lange Mittagspause einplanen.']],
+      5:[['Ferragosto-Vorrat','Lebensmittel spätestens am 14.08. einkaufen; kleinere Geschäfte können geschlossen sein.'],['Früh zum See','Möglichst vor 10 Uhr baden und die Hauptandrangzeit meiden.'],['Abendessen reservieren','Für den Feiertag nicht auf spontane Plätze verlassen.'],['Bei Regen','Kellerei Kaltern statt See; keine Fernfahrt an einem Feiertag mit vollen Straßen und Parkhäusern.']],
+      6:[['Malcesine als Standard','Nur bei ausdrücklichem Kulturwunsch nach Verona oder Brescia wechseln – niemals zwei Orte kombinieren.'],['Früh starten','Malcesine möglichst vor dem stärksten Gardasee-Verkehr erreichen.'],['Kinderpause einplanen','Hafen, Eis und einen kurzen Spielplatz- oder Badestopp als feste Pause nutzen.'],['Verona oder Brescia nur alternativ','Außerhalb der ZTL bzw. des Zentrums parken und eine lange Mittagspause einplanen; Brescia ist die deutlich weitere Fahrt.']],
       7:[['Ötzi-Zeitfenster','Reservierung und aktuelle Familienangebote vorab prüfen.'],['Vape-Shop anrufen','Vorher unter +39 0471 301120 fragen, ob Nikotinshots beziehungsweise „booster di nicotina“ verfügbar sind.'],['Auto stehen lassen','Vom Parkhaus aus Altstadt, Museum und Einkauf zu Fuß verbinden.'],['Kinderpause','Nach etwa einer Stunde Museum bewusst abbrechen oder pausieren.']],
       8:[['Sicht und Wetter prüfen','Nur bei stabiler Fernsicht zum Karersee fahren; sonst mit Trient/MUSE tauschen.'],['Spätestens 08:00 starten','Vor den großen Besuchergruppen am See sein.'],['Bergkleidung','Auch bei Hitze leichte Jacke und feste Schuhe einpacken.'],['Nachmittag bewusst kurz','Latemar.Natura nach 60–90 Minuten beenden und keinen Zusatzstopp anhängen.']],
       9:[['MUSE-Tickets','Familienticket und Maxi Ooh! vorab prüfen beziehungsweise buchen.'],['Museum priorisieren','Für das MUSE ausreichend Zeit lassen; Altstadt nur kurz ergänzen.'],['Regenplan aktivieren','Diesen Tag bevorzugt bei Regen oder großer Hitze einsetzen beziehungsweise mit dem Dolomitentag tauschen.'],['Parkadresse speichern','MUSE-Parkmöglichkeit vorab in der Navigation sichern.']],
@@ -6861,10 +6869,10 @@ body.dialog-scroll-locked{overflow:hidden!important}
             <h4>${s.title}</h4>
             <p class="text-small">${s.desc}</p>
             <div class="address-row"><span class="address text-small">${s.address}</span><button type="button" class="btn btn-ghost copy-address" data-address="${s.address.replace(/"/g,'&quot;')}">Adresse kopieren</button></div>
-            <div class="link-row"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(s.address)}" target="_blank" rel="noopener">Google Maps</a><a class="btn" href="${s.url}" target="_blank" rel="noopener">Offizielle Info</a></div>
+            <div class="link-row"><a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(s.address)}&travelmode=driving" target="_blank" rel="noopener">Navigation</a><a class="btn" href="${s.url}" target="_blank" rel="noopener">Offizielle Info</a></div>
           </div>
         </article>`).join('')}</div>`;
-      const food=restaurants.map(r=>`<div class="stop"><strong>${r[0]}: ${r[1]}</strong><div class="address-row"><span class="address text-small">${r[2]}</span></div><div class="link-row"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(r[2])}" target="_blank" rel="noopener">Google Maps</a></div></div>`).join('');
+      const food=restaurants.map(r=>`<div class="stop"><strong>${r[0]}: ${r[1]}</strong><div class="address-row"><span class="address text-small">${r[2]}</span></div><div class="link-row"><a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(r[2])}&travelmode=driving" target="_blank" rel="noopener">Navigation</a></div></div>`).join('');
       panel.innerHTML=`
         <div class="day-detail-head">
           <div>
@@ -6909,10 +6917,10 @@ body.dialog-scroll-locked{overflow:hidden!important}
             <h4>${s.title}</h4>
             <p class="text-small">${s.desc}</p>
             <div class="address-row"><span class="address text-small">${s.address}</span><button type="button" class="btn btn-ghost mobile-copy" data-address="${s.address.replace(/"/g,'&quot;')}">Adresse kopieren</button></div>
-            <div class="link-row"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(s.address)}" target="_blank" rel="noopener">Route</a><a class="btn" href="${s.url}" target="_blank" rel="noopener">Infos</a></div>
+            <div class="link-row"><a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(s.address)}&travelmode=driving" target="_blank" rel="noopener">Route</a><a class="btn" href="${s.url}" target="_blank" rel="noopener">Infos</a></div>
           </div>
         </article>`).join('')}</div>`;
-      const foodHtml=restaurants.map(r=>`<div class="stop"><strong>${r[0]}: ${r[1]}</strong><div class="address-row"><span class="address text-small">${r[2]}</span></div><div class="link-row"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(r[2])}" target="_blank" rel="noopener">Route</a></div></div>`).join('');
+      const foodHtml=restaurants.map(r=>`<div class="stop"><strong>${r[0]}: ${r[1]}</strong><div class="address-row"><span class="address text-small">${r[2]}</span></div><div class="link-row"><a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(r[2])}&travelmode=driving" target="_blank" rel="noopener">Route</a></div></div>`).join('');
       const todoHtml=todos.map(t=>`<div class="todo-item"><div class="todo-mark">□</div><div><strong>${t[0]}</strong><div class="todo-text text-small">${t[1]}</div></div></div>`).join('');
       box.innerHTML=`<p class="accordion-intro">${data.intro}</p><details open><summary>Tagesablauf & Ziele</summary>${stopHtml}</details><details><summary>Essen · günstig zuerst</summary>${foodHtml}</details><details><summary>Wichtige To-dos</summary><div class="todo-list">${todoHtml}</div></details><button type="button" class="btn btn-primary complete-day" data-day="${day}">✓ Aktivität abhaken</button>`;
       const active=root.querySelector(`.day[data-day="${day}"]`);
@@ -6968,7 +6976,7 @@ body.dialog-scroll-locked{overflow:hidden!important}
     }
     function viewArchivedDay(day){
       const data=dayDetails.find(d=>d.day===day),restaurants=dayRestaurants[day]||[],todos=dayTodos[day]||[];
-      const stops=data.stops.map(s=>`<div class="stop"><strong>${s.time}: ${s.title}</strong><p class="text-small">${s.desc}</p><div class="address-row"><span class="address text-small">${s.address}</span><button type="button" class="btn btn-ghost archive-copy" data-address="${s.address.replace(/"/g,'&quot;')}">Adresse kopieren</button></div><div class="link-row"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(s.address)}" target="_blank" rel="noopener">Route</a><a class="btn" href="${s.url}" target="_blank" rel="noopener">Infos</a></div></div>`).join('');
+      const stops=data.stops.map(s=>`<div class="stop"><strong>${s.time}: ${s.title}</strong><p class="text-small">${s.desc}</p><div class="address-row"><span class="address text-small">${s.address}</span><button type="button" class="btn btn-ghost archive-copy" data-address="${s.address.replace(/"/g,'&quot;')}">Adresse kopieren</button></div><div class="link-row"><a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(s.address)}&travelmode=driving" target="_blank" rel="noopener">Route</a><a class="btn" href="${s.url}" target="_blank" rel="noopener">Infos</a></div></div>`).join('');
       const food=restaurants.map(r=>`<div class="stop"><strong>${r[0]}: ${r[1]}</strong><div class="text-small text-muted">${r[2]}</div></div>`).join('');
       const todo=todos.map(t=>`<div class="todo-item"><div class="todo-mark">□</div><div><strong>${t[0]}</strong><div class="todo-text text-small">${t[1]}</div></div></div>`).join('');
       const detail=root.querySelector('#archive-detail');
@@ -7272,7 +7280,7 @@ body.dialog-scroll-locked{overflow:hidden!important}
 
           <div class="excursion-detail-actions">
             <a class="btn btn-primary excursion-external-link"
-               href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(activity.address)}"
+               href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(activity.address)}&travelmode=driving"
                target="_blank"
                rel="noopener"
                aria-label="Route in Google Maps extern öffnen">
@@ -7410,7 +7418,7 @@ body.dialog-scroll-locked{overflow:hidden!important}
             <span class="address text-small">${r.address}</span>
           </div>
           <div class="link-row">
-            <a class="btn" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(r.name+' '+r.address)}" target="_blank" rel="noopener"><span>Google Maps</span><span class="external-link-mark" aria-hidden="true">↗</span></a>
+            <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(r.name+' '+r.address)}&travelmode=driving" target="_blank" rel="noopener"><span>Navigation</span><span class="external-link-mark" aria-hidden="true">↗</span></a>
           </div>
         </article>`;
       }).join('');
@@ -9445,7 +9453,7 @@ document.addEventListener("click",e=>{const b=e.target.closest("[data-open-check
    tools.id='phone-tools';
    tools.className='travel-knowledge-card';
    tools.innerHTML=`<summary>🚨 Notfall</summary><div class="travel-knowledge-body phone-tools-body">
-     <section><strong>Reiseplan verwenden</strong><div class="phone-action-grid"><button class="btn" id="share-plan" type="button">Reiseplan teilen</button><select class="form-select" id="calendar-day" aria-label="Tag für Kalender">${dayOptions(1)}</select><button class="btn" id="save-calendar" type="button">Als Kalenderdatei speichern</button><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Garni+Osannahöfl+Kaltern" target="_blank" rel="noopener noreferrer">Hotel-Navigation</a></div></section>
+     <section><strong>Reiseplan verwenden</strong><div class="phone-action-grid"><button class="btn" id="share-plan" type="button">Reiseplan teilen</button><select class="form-select" id="calendar-day" aria-label="Tag für Kalender">${dayOptions(1)}</select><button class="btn" id="save-calendar" type="button">Als Kalenderdatei speichern</button><a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=Garni+Osannahöfl+Kaltern&travelmode=driving" target="_blank" rel="noopener noreferrer">Hotel-Navigation</a></div></section>
      <section class="emergency-box"><h3>Notfall & Panne</h3><div class="emergency-links"><a href="tel:112"><span>Europaweiter Notruf</span><span>112</span></a><a href="tel:+4989222222"><span>ADAC Pannenhilfe Ausland</span><span>+49 89 22 22 22</span></a></div><p class="text-small">Bei einer Panne: Warnblinker, Warnweste, sichere Stelle aufsuchen und Standort aus Google Maps ablesen. Standort wird nicht automatisch abgefragt.</p></section>
    </div>`;
    knowledge.appendChild(tools);
@@ -9546,6 +9554,66 @@ document.addEventListener("click",e=>{const b=e.target.closest("[data-open-check
  };
  apply();
  new MutationObserver(()=>requestAnimationFrame(enhance)).observe(root,{childList:true,subtree:true});
+})();
+</script>
+
+<script id="app-module-v70-21-statistics-card">
+/* Modul: v709-statistics-card */
+(()=>{
+ 'use strict';
+ const root=document.getElementById('st-roadmap');
+ const store=window.SuedtirolStore;
+ if(!root||!store||root.dataset.statsCardV709==='1')return;
+ root.dataset.statsCardV709='1';
+ const TOTAL_DAYS=12;
+
+ function ensureCard(){
+   const more=root.querySelector('#app-page-more');
+   if(!more)return null;
+   let card=more.querySelector('#stats-card');
+   if(card)return card;
+   const host=more.querySelector('#travel-knowledge')||more;
+   card=document.createElement('details');
+   card.id='stats-card';
+   card.className='travel-knowledge-card';
+   card.innerHTML='<summary>📊 Statistik</summary><div class="travel-knowledge-body" id="stats-body"></div>';
+   host.appendChild(card);
+   return card;
+ }
+
+ function render(){
+   const card=ensureCard();
+   if(!card)return;
+   const body=card.querySelector('#stats-body');
+   if(!body)return;
+   let completedDays=[];let completedActivities=[];
+   try{completedDays=(store.read('completedDays')||[]).filter(d=>Number.isInteger(d));}catch(_){}
+   try{completedActivities=store.read('completedActivities')||[];}catch(_){}
+   const doneDays=completedDays.length;
+   const pct=TOTAL_DAYS?Math.round((doneDays/TOTAL_DAYS)*100):0;
+   const dayList=completedDays.slice().sort((a,b)=>a-b).map(d=>`Tag ${d}`).join(', ')||'noch keiner';
+   body.innerHTML=`
+     <div class="travel-fact-row"><strong>Reisetage abgehakt</strong><p>${doneDays} von ${TOTAL_DAYS} (${pct}\u00a0%)</p></div>
+     <div class="travel-fact-row"><strong>Welche Tage</strong><p>${dayList}</p></div>
+     <div class="travel-fact-row"><strong>Aktivitäten abgehakt</strong><p>${completedActivities.length}</p></div>`;
+ }
+
+ render();
+ window.addEventListener('storage',render);
+ root.addEventListener('click',()=>setTimeout(render,150));
+ setTimeout(render,600);
+})();
+</script>
+
+<script id="app-module-v70-22-sw-register">
+/* Modul: v709-sw-register — installiert die App als Homescreen-Icon und cacht sie fürs Offline-Öffnen.
+   Setzt voraus, dass manifest.webmanifest und sw.js im selben Verzeichnis wie diese HTML-Datei liegen. */
+(()=>{
+ 'use strict';
+ if(!('serviceWorker' in navigator))return;
+ window.addEventListener('load',()=>{
+   navigator.serviceWorker.register('sw.js').catch(()=>{/* kein sw.js gefunden – App funktioniert weiter normal, nur ohne Installierbarkeit */});
+ });
 })();
 </script>
 
