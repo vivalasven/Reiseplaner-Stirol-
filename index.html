@@ -26,7 +26,7 @@
 /* Modul: blueprint-config-v59 */
 window.TRIP_BLUEPRINT=Object.freeze({
  schemaVersion:2,
- buildVersion:"70.11.0",
+ buildVersion:"70.11.1",
  appTitle:"Famiglia Liebthal",
  appSubtitle:"Unser Familienurlaub",
  locale:"de-DE",
@@ -52,7 +52,7 @@ window.TRIP_BLUEPRINT=Object.freeze({
     popupTodos:{key:'suedtirol-2026-popup-todos-v63-2',scope:'local',fallback:{}},
     hiddenExcursions:{key:'suedtirol-2026-hidden-excursions',scope:'local',fallback:[]},
     planAssignments:{key:'suedtirol-2026-plan-assignments',scope:'local',fallback:{}},
-    dayOrder:{key:'suedtirol-2026-day-order',scope:'local',fallback:[1,2,3,4,5,6,7,8,9,10,11,12]},
+    dayOrder:{key:'suedtirol-2026-day-order',scope:'local',fallback:[5,6,7,8,9,10,11,12]},
     themeMode:{key:'suedtirol-theme-session-v52',scope:'session',fallback:'system',raw:true},
     lastOpenDay:{key:'suedtirol-last-open-day',scope:'session',fallback:'',raw:true}
   });
@@ -91,7 +91,7 @@ window.TRIP_BLUEPRINT=Object.freeze({
   const validDays=value=>Array.isArray(value)?[...new Set(value.map(Number).filter(day=>Number.isInteger(day)&&day>=1&&day<=12))].sort((a,b)=>a-b):[];
   const validDayOrder=value=>{
     const order=Array.isArray(value)?[...new Set(value.map(Number).filter(day=>Number.isInteger(day)&&day>=1&&day<=12))]:[];
-    return order.length===12?order:[1,2,3,4,5,6,7,8,9,10,11,12];
+    return order.length===8?order:[5,6,7,8,9,10,11,12];
   };
   function normalize(state){
     const notes=state&&state.personalNotes&&typeof state.personalNotes==='object'&&!Array.isArray(state.personalNotes)
@@ -139,7 +139,7 @@ window.TRIP_BLUEPRINT=Object.freeze({
 <meta content="#1b1b1b" name="theme-color"/>
 <meta content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; manifest-src 'self'; worker-src 'self'" http-equiv="Content-Security-Policy"/>
 <link href="manifest.webmanifest" rel="manifest"/>
-<title>Südtirol Reiseplaner V70.11</title>
+<title>Südtirol Reiseplaner V70.11.1 – Resturlaub</title>
 <style>#st-roadmap .excursion-internal-section > summary,
 #st-roadmap .unified-detail-section > summary{padding-block:12px !important}#st-roadmap .excursion-internal-list{padding:12px 12px 14px !important;gap:10px !important;display:grid !important;gap:10px !important;padding:2px 16px 16px !important;gap:8px !important;padding:2px 14px 14px !important;gap:7px !important;padding:2px 12px 11px !important;gap:12px !important;gap:9px !important;gap:10px !important;padding:14px !important}#st-roadmap .suggested-day-section-content{padding:12px 12px 14px !important;gap:10px !important;display:grid !important;gap:12px !important;padding:2px 16px 16px !important;gap:8px !important;padding:2px 11px 11px !important}#st-roadmap .excursion-internal-section[open] > summary,
 #st-roadmap .unified-detail-section[open] > summary{margin-bottom:0 !important}#st-roadmap .excursion-internal-item{padding-top:1px !important;display:grid !important;grid-template-columns:22px minmax(0,1fr) !important;gap:8px !important;align-items:start !important;font-size:.86rem !important;line-height:1.45 !important;font-size:.82rem !important;grid-template-columns:20px minmax(0,1fr) !important;gap:7px !important;font-size:.78rem !important;line-height:1.38 !important}#st-roadmap .excursion-detail-card .excursion-internal-section > summary,
@@ -748,40 +748,53 @@ html[data-theme="dark"] #st-roadmap .nav-destination[aria-current="page"] .nav-i
       {id:'oy',n:1,name:'OY Hotel by WMM',lat:47.64,lon:10.46,kind:'route',tags:['all'],weather:['all'],km:'Etappe 1',detail:'11.08.: reine Anreise, früh schlafen; keine Zusatztermine einplanen.'},
       {id:'neu',n:2,name:'Neuschwanstein-Aussicht',lat:47.558,lon:10.75,kind:'culture',tags:['culture','family'],weather:['sun'],km:'ca. 35 km ab Oy',detail:'12.08.: ohne Eintrittskarte per Shuttle ab P4 zum Aussichtspunkt Jugend / zur Marienbrücke. Fünf Minuten Fußweg, Außenansicht kostenlos; anschließend direkt weiter nach Kaltern.'},
       {id:'hotel',n:3,name:'Garni Osannahöfl',lat:46.382,lon:11.255,kind:'route',tags:['all'],weather:['all'],km:'Basis',detail:'Ruhige Basis in den Weinbergen; Gretl am See ist in etwa 10 Minuten zu Fuß erreichbar.'},
-      {id:'lake',n:3,name:'Kalterer See / Gretl',lat:46.377,lon:11.256,kind:'water',tags:['water','family'],weather:['sun','hot'],km:'zu Fuß',detail:'13.08. und als tägliche Option: ankommen, baden, Eis essen. Am 15.08. nur früh oder spät – Ferragosto ist sehr voll.'},
+      {id:'lake',n:5,name:'Kalterer See / Gretl',lat:46.377,lon:11.256,kind:'water',tags:['water','family'],weather:['sun','hot'],km:'zu Fuß',detail:'13.08. und als tägliche Option: ankommen, baden, Eis essen. Am 15.08. nur früh oder spät – Ferragosto ist sehr voll.'},
       {id:'mendel',n:3,name:'Mendelbahn & Pass',lat:46.418,lon:11.208,kind:'nature',tags:['nature','family'],weather:['sun','hot'],km:'ca. 12 km',detail:'13.08.: spektakuläre 12-Minuten-Fahrt, oben 60–90 Minuten sehr leicht spazieren; nachmittags See und Eis.'},
       {id:'mont',n:6,name:'Montiggler Seen',lat:46.429,lon:11.289,kind:'water',tags:['water','nature','family'],weather:['sun','hot'],km:'ca. 18 km',detail:'16.08.: schattiger Wald und Badestopp. Nur eine kurze Teilrunde wählen, nicht beide Seen komplett erzwingen.'},
       {id:'ice',n:6,name:'Eislöcher Eppan',lat:46.466,lon:11.235,kind:'nature',tags:['nature','family'],weather:['hot'],km:'ca. 17 km',detail:'Alternative am selben Tag oder statt Montiggl: kurze Familienwanderung und spürbare Abkühlung zwischen 0 und 9 °C.'},
-      {id:'bozen',n:7,name:'Bozen & Ötzi',lat:46.499,lon:11.354,kind:'culture',tags:['culture','family'],weather:['rain','hot'],km:'ca. 25 km',detail:'17.08.: Altstadt plus etwa 1 Stunde Museum. Eintritt 3 Tage vorher reservieren; Family Zone täglich 12–18 Uhr.'},
+      {id:'bozen',n:6,name:'Bozen & Ötzi',lat:46.499,lon:11.354,kind:'culture',tags:['culture','family'],weather:['rain','hot'],km:'ca. 25 km',detail:'17.08.: Altstadt plus etwa 1 Stunde Museum. Eintritt 3 Tage vorher reservieren; Family Zone täglich 12–18 Uhr.'},
       {id:'carezza',n:8,name:'Karersee',lat:46.409,lon:11.575,kind:'nature',tags:['nature','family'],weather:['sun'],km:'ca. 52 km',detail:'18.08.: früh starten, kurze Seerunde vor den Tagesgästen. Bei stabiler Sicht anschließend Latemar.Natura in Obereggen.'},
       {id:'latemar',n:8,name:'Latemar.Natura',lat:46.383,lon:11.526,kind:'nature',tags:['nature','family'],weather:['sun'],km:'ca. 48 km',detail:'Sehr leichter Erlebnisweg mit Spiel- und Lernstationen, teils kinderwagentauglich. Nur 1–2 Stunden auswählen.'},
-      {id:'trento',n:9,name:'Trient & MUSE',lat:46.074,lon:11.121,kind:'culture',tags:['culture','family'],weather:['rain','hot'],km:'ca. 43 km',detail:'19.08.: bester Schlechtwettertag. MUSE 10–19 Uhr; Maxi Ooh! ist speziell für 0–5 Jahre. Danach Altstadt und Pizza.'},
+      {id:'trento',n:7,name:'Trient & MUSE',lat:46.074,lon:11.121,kind:'culture',tags:['culture','family'],weather:['rain','hot'],km:'ca. 43 km',detail:'19.08.: bester Schlechtwettertag. MUSE 10–19 Uhr; Maxi Ooh! ist speziell für 0–5 Jahre. Danach Altstadt und Pizza.'},
       {id:'ritten',n:10,name:'Ritten & Erdpyramiden',lat:46.54,lon:11.46,kind:'nature',tags:['nature','family'],weather:['sun','hot'],km:'ca. 40 km',detail:'20.08.: Seilbahn ab Bozen, historische Rittner Bahn und kurzer Aussichtsspaziergang. Auto in Bozen lassen.'},
       {id:'meran',n:11,name:'Meran & Trauttmansdorff',lat:46.662,lon:11.184,kind:'culture',tags:['culture','nature','family'],weather:['sun','hot'],km:'ca. 42 km',detail:'21.08.: Gärten am Vormittag, Spielstationen und Touriseum; später kurze Meraner Altstadtrunde. Alternativ bei Hitze erst nachmittags.'},
       {id:'rasten',n:11,name:'Rastenbachklamm',lat:46.389,lon:11.229,kind:'nature',tags:['nature','family'],weather:['hot'],km:'ca. 5 km',detail:'Lokale Tauschmalternative: ab Parkplatz Müllereck nur ein kurzes Teilstück bergab. Viele Stufen, kein Kinderwagen; Kind an der Hand.'},
-      {id:'plose',n:4,name:'Plose & WoodyWalk',lat:46.697,lon:11.733,kind:'nature',tags:['nature','family'],weather:['sun','hot'],km:'ca. 82 km',detail:'14.08. als Ganztag: Gondel ab St. Andrä, Spielstationen am WoodyWalk, Picknick oder Hütte. Für ein vierjähriges Kind eines der besten Bergziele.'},
-      {id:'brixen',n:4,name:'Brixen',lat:46.716,lon:11.657,kind:'culture',tags:['culture','family'],weather:['sun','hot'],km:'ca. 76 km',detail:'Nach der Plose nur noch 60–90 Minuten Altstadt, Eis und Domplatz; kein weiteres Museum.'},
-      {id:'verona',n:6,name:'Verona',lat:45.438,lon:10.992,kind:'culture',tags:['culture','family'],weather:['sun'],km:'ca. 145 km',detail:'16.08. als Ganztag: Arena von außen, Piazza Bra, Piazza delle Erbe, Ponte Pietra und Gelato. Außerhalb der ZTL parken; bei großer Hitze früh starten und lange Mittagspause.'},
-      {id:'malcesine',n:6,name:'Malcesine',lat:45.765,lon:10.809,kind:'water',tags:['water','culture','family'],weather:['sun'],km:'ca. 120 km',detail:'Tauschoption statt Verona: hübscher und entspannter mit Kind, aber weniger kulturell bedeutend. Altstadt, Hafen, Burg von außen und Baden; Monte-Baldo-Bahn nur mit frühem Onlineticket.'},
-      {id:'brescia',n:6,name:'Brescia',lat:45.541,lon:10.211,kind:'culture',tags:['culture','family'],weather:['sun','cloud'],km:'ca. 165 km',detail:'Zweite Kultur-Alternative statt Verona: ruhigeres Zentrum mit Piazza della Loggia und Castello. Deutlich weiter als Malcesine – nur bei sehr frühem Start und wenig Interesse an Verona wählen.'},
-      {id:'varone',n:10,name:'Varone-Wasserfall',lat:45.911,lon:10.833,kind:'nature',tags:['nature','family'],weather:['hot','rain'],km:'ca. 105 km',detail:'20.08. vormittags: kurzer, eindrucksvoller Wasserfallbesuch; Regenjacken und rutschfeste Schuhe mitnehmen.'},
-      {id:'riva',n:10,name:'Riva del Garda',lat:45.889,lon:10.844,kind:'water',tags:['water','culture','family'],weather:['sun','hot'],km:'ca. 102 km',detail:'20.08. nachmittags: Promenade, Spielplatz, Eis und Strand. Nicht noch Malcesine dazupacken – es liegt am gegenüberliegenden Ufer.'}
+      {id:'plose',n:9,name:'Plose & WoodyWalk',lat:46.697,lon:11.733,kind:'nature',tags:['nature','family'],weather:['sun','hot'],km:'ca. 82 km',detail:'14.08. als Ganztag: Gondel ab St. Andrä, Spielstationen am WoodyWalk, Picknick oder Hütte. Für ein vierjähriges Kind eines der besten Bergziele.'},
+      {id:'brixen',n:9,name:'Brixen',lat:46.716,lon:11.657,kind:'culture',tags:['culture','family'],weather:['sun','hot'],km:'ca. 76 km',detail:'Nach der Plose nur noch 60–90 Minuten Altstadt, Eis und Domplatz; kein weiteres Museum.'},
+      {id:'verona',n:10,name:'Verona',lat:45.438,lon:10.992,kind:'culture',tags:['culture','family'],weather:['sun'],km:'ca. 145 km',detail:'16.08. als Ganztag: Arena von außen, Piazza Bra, Piazza delle Erbe, Ponte Pietra und Gelato. Außerhalb der ZTL parken; bei großer Hitze früh starten und lange Mittagspause.'},
+      {id:'malcesine',n:10,name:'Malcesine',lat:45.765,lon:10.809,kind:'water',tags:['water','culture','family'],weather:['sun'],km:'ca. 120 km',detail:'Tauschoption statt Verona: hübscher und entspannter mit Kind, aber weniger kulturell bedeutend. Altstadt, Hafen, Burg von außen und Baden; Monte-Baldo-Bahn nur mit frühem Onlineticket.'},
+      {id:'brescia',n:10,name:'Brescia',lat:45.541,lon:10.211,kind:'culture',tags:['culture','family'],weather:['sun','cloud'],km:'ca. 165 km',detail:'Zweite Kultur-Alternative statt Verona: ruhigeres Zentrum mit Piazza della Loggia und Castello. Deutlich weiter als Malcesine – nur bei sehr frühem Start und wenig Interesse an Verona wählen.'},
+      {id:'varone',n:11,name:'Varone-Wasserfall',lat:45.911,lon:10.833,kind:'nature',tags:['nature','family'],weather:['hot','rain'],km:'ca. 105 km',detail:'20.08. vormittags: kurzer, eindrucksvoller Wasserfallbesuch; Regenjacken und rutschfeste Schuhe mitnehmen.'},
+      {id:'riva',n:11,name:'Riva del Garda',lat:45.889,lon:10.844,kind:'water',tags:['water','culture','family'],weather:['sun','hot'],km:'ca. 102 km',detail:'20.08. nachmittags: Promenade, Spielplatz, Eis und Strand. Nicht noch Malcesine dazupacken – es liegt am gegenüberliegenden Ufer.'}
     ];
     const days = [
       ['Di 11.08.','Anreise + Füssen','08:00 Abfahrt. Nach Check-in: romantische Altstadt, Lechufer und preiswertes Abendessen.'],
       ['Mi 12.08.','Neuschwanstein-Aussicht → Kaltern','Vormittag: Shuttle zu Jugend/Marienbrücke. Nachmittag: Weiterfahrt, Einkauf, Check-in.'],
       ['Do 13.08.','Mendelbahn + See','Vormittag: Mendelpass und leichter Spaziergang. Nachmittag: Strand, Eis, Ruhe.'],
       ['Fr 14.08.','Plose + Brixen','Ganztag: WoodyWalk und Bergspielplätze; auf dem Rückweg kurze Brixen-Runde.'],
-      ['Sa 15.08.','Ferragosto-Puffertag','Früh baden, lange Siesta, Hotelgarten; Menschenmengen meiden.'],
-      ['So 16.08.','Malcesine – Verona optional','Standard: entspannter Familientag in Malcesine. Verona nur als bewusste Kultur-Alternative.'],
-      ['Mo 17.08.','Bozen + Ötzi','Vormittag: Lauben und Markt. Nachmittag: Ötzi mit Family Zone.','3 Tage vorher'],
-      ['Di 18.08.','Dolomiten-Sichttag','Spätestens 08:00 Uhr starten: Karersee vor dem Andrang, danach nur ein kurzer Latemar-Erlebnisweg.'],
-      ['Mi 19.08.','MUSE + kurzes Trient','MUSE und Maxi Ooh! sind der Schwerpunkt; Altstadt nur kurz davor oder danach.','Ticket'],
-      ['Do 20.08.','Varone + Riva del Garda','Vormittag: Wasserfall. Nachmittag: Promenade, Spielplatz und Baden.'],
-      ['Fr 21.08.','Trauttmansdorff + Meran','Vormittag: Gärten und Touriseum. Später kurze Meraner Altstadtrunde; danach Abschlussessen.','Ticket · Tisch'],
+      ['Sa 15.08.','Kalterer See','Ganzer Tag am See: baden, entspannen und bei möglichem Nachmittagsgewitter flexibel bleiben.'],
+      ['So 16.08.','Bozen + Ötzi','Flexibler Stadt- und Museumstag: Altstadt, Obstmarkt und Ötzi-Museum; bei Gewitter schnell ins Trockene.'],
+      ['Mo 17.08.','MUSE + kurzes Trient','Schlechtwettertag: MUSE als Schwerpunkt, Trient nur kurz davor oder danach.','Ticket'],
+      ['Di 18.08.','Dolomiten-Sichttag','Priorisierter Bergtag: früh zum Karersee, danach nur ein kurzer Latemar-Erlebnisweg.'],
+      ['Mi 19.08.','Plose + Brixen','Zweiter priorisierter Bergtag: WoodyWalk und Bergspielplätze; anschließend kurze Brixen-Runde.'],
+      ['Do 20.08.','Malcesine – Verona optional','Standard: Malcesine und Gardasee. Verona bleibt die bewusste Kultur-Alternative.'],
+      ['Fr 21.08.','Varone + Riva del Garda','Vormittag Wasserfall, danach Promenade, Spielplatz und optional Baden in Riva.'],
       ['Sa 22.08.','Abreise','Kein Fernziel mehr; gemütlich nach dem Frühstück starten.']
     ];
-    const dayDistances=['Anreise','35 km + Etappe','12 km','82 km','0–5 km','120–145 km','25 km','48–52 km','43 km','102–105 km','42–46 km','Heimfahrt'];
+    const dayDistances=[
+      'Anreise',
+      '35 km + Etappe',
+      '12 km',
+      '82 km',
+      '0–5 km',
+      '25 km',
+      '43 km',
+      '48–52 km',
+      '82 km',
+      '120–145 km',
+      '102–105 km',
+      'Heimfahrt'
+    ];
     const storageSchemaKey='suedtirol-2026-storage-schema';
     const storageSchemaVersion='26';
     const completedKey='suedtirol-2026-completed-days';
@@ -805,12 +818,12 @@ html[data-theme="dark"] #st-roadmap .nav-destination[aria-current="page"] .nav-i
       {day:3,intro:'Ein leichter Bergvormittag; nachmittags könnt ihr zwischen See und Pferdeerlebnis wählen.',stops:[{time:'Vormittag',title:'Mendelbahn Talstation',address:'St. Anton 1, 39052 Kaltern, Italien',desc:'Berg- und Talfahrt, oben höchstens 60–90 Minuten Naturspaziergang.',url:'https://www.kaltern.com/en/the-mendola-cable-car.html'},{time:'Nachmittag A',title:'Gretl am See',address:'St. Josef am See 18, 39052 Kaltern, Italien',desc:'Baden, Eis und frühes Abendessen am See.',url:'https://www.gretlamsee.com/'},{time:'Nachmittag B · vorher anfragen',title:'Pony-/Schnuppertermin in Kaltern',address:'Pferdesportanlage Georgsturm, Oberplanitzing, 39052 Kaltern, Italien',desc:'Bei Reitschule Priska Kelderer ausdrücklich nach einem kurzen Angebot für ein vierjähriges Kind fragen; Alter und Verfügbarkeit vorab bestätigen lassen.',url:'https://www.suedtirolerland.it/de/freizeit-aktiv/weitere-sportarten/pferde-reiten/in-suedtirols-sueden/'},{time:'Familienalternative · reservieren',title:'Pferdekutschenfahrt Tramin',address:'Tourismusverein Tramin, Mindelheimer Straße 10A, 39040 Tramin, Italien',desc:'Gemütliche Fahrt durch Obstgärten und Landschaft. Termin und kindgerechte Teilnahme spätestens am Vortag bestätigen.',url:'https://www.tramin.com/de/kutschenfahrt/'}]},
       {day:4,intro:'Ganztagesausflug: Die Plose ist besonders stark für ein vierjähriges Kind.',stops:[{time:'Vormittag–Nachmittag',title:'Plose Kabinenbahn & WoodyWalk',address:'Seilbahnstraße 17, 39042 St. Andrä bei Brixen, Italien',desc:'Gondel, Spielstationen, Wasserspiele und Hütteneinkehr. Wechselkleidung mitnehmen.',url:'https://www.plose.org/woodywalk/'},{time:'Rückweg',title:'Brixen Domplatz',address:'Domplatz, 39042 Brixen, Italien',desc:'Nur eine kurze Altstadtrunde mit Eis; bei müdem Kind direkt zurückfahren.',url:'https://www.brixen.org'}]},
       {day:5,intro:'Ferragosto: bewusst lokal bleiben und Stoßzeiten vermeiden.',stops:[{time:'Früh',title:'Kalterer See',address:'St. Josef am See 18, 39052 Kaltern, Italien',desc:'Möglichst vor 10 Uhr baden, danach Hotelgarten und lange Pause.',url:'https://www.kalterersee.com/de/freizeit-aktiv/weitere-wassersportarten/schwimmen/schwimmen-im-kalterer-see/'},{time:'Später Nachmittag',title:'Kaltern Dorf',address:'Marktplatz, 39052 Kaltern, Italien',desc:'Kurzer Spaziergang und reserviertes Abendessen; kleine Geschäfte können geschlossen sein.',url:'https://www.kaltern.com'},{time:'Regenalternative',title:'Kellerei Kaltern – Erlebniswelt',address:'Kellereistraße 12, 39052 Kaltern, Italien',desc:'Überdachte Alternative bei Regen: Vinothek und kurzer Rundgang, danach zeitig ins Hotel. Ötzi/Bozen nur bei genug Zeit tauschen, nicht an einem Feiertag mit vollen Parkhäusern.',url:'https://www.kellereikaltern.com/'}]},
-      {day:6,intro:'Malcesine ist für euch die Standardwahl: kürzere Wege, Hafen, Eis und ein entspannteres Tempo mit Kind. Verona bleibt die bewusste Kultur-Alternative.',stops:[{time:'Standard · Ganztag',title:'Malcesine',address:'Piazza Statuto, 37018 Malcesine, Italien',desc:'Altstadt, Hafen, Burgkulisse, Eis, kurzer Spielplatz- oder Badestopp. Früh ankommen und nicht zusätzlich nach Verona fahren.',url:'https://www.visitmalcesine.com/dede'},{time:'Alternative · Ganztag',title:'Verona – Parcheggio Centro',address:'Via Campo Marzo, 3, 37133 Verona, Italien',desc:'Nur wählen, wenn ihr bewusst einen längeren Kulturtag möchtet. Außerhalb der ZTL parken, Arena außen, Piazza delle Erbe, Ponte Pietra und lange Mittagspause.',url:'https://www.visitverona.it/en/'},{time:'Zweite Alternative · Ganztag',title:'Brescia – Autosilo Centro',address:'Via Solferino 1, 25121 Brescia, Italien',desc:'Nur bei sehr frühem Start: Piazza della Loggia, Piazza del Duomo und Castello von außen. Längste Fahrzeit der drei Optionen; für ein müdes Kind eher ungeeignet.',url:'https://www.visitbrescia.it/'}]},
-      {day:7,intro:'Stadt, Museum und der notwendige Vape-Einkauf lassen sich ohne zusätzliche Fernfahrt verbinden.',stops:[{time:'Vormittag',title:'Tiefgarage Bozen Mitte',address:'Josef-Mayr-Nusser-Straße, 39100 Bozen, Italien',desc:'Lauben, Obstmarkt und frühes Mittagessen.',url:'https://www.bolzano-bozen.it'},{time:'Nachmittag',title:'Südtiroler Archäologiemuseum',address:'Museumstraße 43, 39100 Bozen, Italien',desc:'Zeitfenster vorab prüfen; Family-Angebote und Öffnung kurz vor dem Besuch bestätigen.',url:'https://www.iceman.it/de'},{time:'Vor der Rückfahrt',title:'Tabaccheria Kolping – Vape-Einkauf',address:'Largo Adolph Kolping 1/G, 39100 Bozen, Italien',desc:'Führt E-Zigaretten und Zubehör. Für Nikotinshots vorher anrufen und nach „booster di nicotina“ oder „base nicotinata“ fragen; Verfügbarkeit ist nicht garantiert.',url:'https://www.tabaccheriakolping.it/'}]},
+      {day:6,intro:'Stadt, Museum und der notwendige Vape-Einkauf lassen sich ohne zusätzliche Fernfahrt verbinden.',stops:[{time:'Vormittag',title:'Tiefgarage Bozen Mitte',address:'Josef-Mayr-Nusser-Straße, 39100 Bozen, Italien',desc:'Lauben, Obstmarkt und frühes Mittagessen.',url:'https://www.bolzano-bozen.it'},{time:'Nachmittag',title:'Südtiroler Archäologiemuseum',address:'Museumstraße 43, 39100 Bozen, Italien',desc:'Zeitfenster vorab prüfen; Family-Angebote und Öffnung kurz vor dem Besuch bestätigen.',url:'https://www.iceman.it/de'},{time:'Vor der Rückfahrt',title:'Tabaccheria Kolping – Vape-Einkauf',address:'Largo Adolph Kolping 1/G, 39100 Bozen, Italien',desc:'Führt E-Zigaretten und Zubehör. Für Nikotinshots vorher anrufen und nach „booster di nicotina“ oder „base nicotinata“ fragen; Verfügbarkeit ist nicht garantiert.',url:'https://www.tabaccheriakolping.it/'}]},
+      {day:7,intro:'Der beste Regen- oder Hitzetag. Das MUSE ist der klare Schwerpunkt; die Altstadt bleibt eine kurze Ergänzung.',stops:[{time:'Hauptprogramm',title:'MUSE & Maxi Ooh!',address:'Corso del Lavoro e della Scienza 3, 38122 Trento, Italien',desc:'Genügend Zeit für das Museum einplanen und Maxi Ooh! für 0–5 Jahre zum Museumsticket ergänzen.',url:'https://www.muse.it/de/home/besuch-planen/oeffnungszeiten-und-eintrittskarten/'},{time:'Kurz davor oder danach',title:'Trient Zentrum',address:'Piazza Fiera, 38122 Trento, Italien',desc:'Nur Domplatz, wenige Gassen, Eis oder frühes Abendessen; bei müdem Kind direkt zurückfahren.',url:'https://www.visittrentino.info/en/trentino/resorts-towns/trento_md_211'}]},
       {day:8,intro:'Nur bei guter Fernsicht und spätestens um 08:00 Uhr starten. Der Karersee ist das Hauptziel; Latemar.Natura bleibt bewusst kurz.',stops:[{time:'Früher Vormittag',title:'Karersee Besucherzentrum',address:'Karerseestraße 165, 39056 Welschnofen, Italien',desc:'Kurze Seerunde möglichst vor den großen Besuchergruppen. Bei schlechter Sicht oder Regen mit dem MUSE-Tag tauschen.',url:'https://eggental.com/en/poi/lake-carezza'},{time:'Mittag bis früher Nachmittag',title:'Obereggen – Latemar.Natura',address:'Obereggen 16, 39050 Deutschnofen, Italien',desc:'Nur einen kurzen Abschnitt mit Spiel- und Lernstationen wählen; spätestens nach 60–90 Minuten umkehren und keinen weiteren Programmpunkt ergänzen.',url:'https://latemarium.com/de/routes/detail/latemar-natura/'}]},
-      {day:9,intro:'Der beste Regen- oder Hitzetag. Das MUSE ist der klare Schwerpunkt; die Altstadt bleibt eine kurze Ergänzung.',stops:[{time:'Hauptprogramm',title:'MUSE & Maxi Ooh!',address:'Corso del Lavoro e della Scienza 3, 38122 Trento, Italien',desc:'Genügend Zeit für das Museum einplanen und Maxi Ooh! für 0–5 Jahre zum Museumsticket ergänzen.',url:'https://www.muse.it/de/home/besuch-planen/oeffnungszeiten-und-eintrittskarten/'},{time:'Kurz davor oder danach',title:'Trient Zentrum',address:'Piazza Fiera, 38122 Trento, Italien',desc:'Nur Domplatz, wenige Gassen, Eis oder frühes Abendessen; bei müdem Kind direkt zurückfahren.',url:'https://www.visittrentino.info/en/trentino/resorts-towns/trento_md_211'}]},
-      {day:10,intro:'Wasserfall und See lassen sich gut zu einem Tagesausflug verbinden.',stops:[{time:'Vormittag',title:'Varone-Wasserfall',address:'Località le Foci 3, 38060 Tenno, Italien',desc:'Kurzer Besuch mit Treppen und Spritzwasser; Regenjacke und feste Schuhe.',url:'https://www.cascata-varone.com/de/'},{time:'Nachmittag',title:'Riva del Garda',address:'Piazza 3 Novembre, 38066 Riva del Garda, Italien',desc:'Promenade, Spielplatz, Eis und optional Baden. Malcesine nicht mehr anhängen.',url:'https://www.gardatrentino.it/de/orte/riva-del-garda'}]},
-      {day:11,intro:'Die Gärten sind das Hauptziel und liegen bewusst am Vormittag. Meran folgt erst später in kurzer Form; der Rainguthof bleibt eine optionale Familientauschvariante.',stops:[{time:'Vormittag',title:'Gärten von Schloss Trauttmansdorff',address:'St.-Valentin-Straße 51A, 39012 Meran, Italien',desc:'Natur, Spiel- und Erlebnisstationen sowie Touriseum. Früh starten, solange euer Kind noch viel Energie hat.',url:'https://www.trauttmansdorff.it/'},{time:'Später Nachmittag',title:'Meran – Parkhaus Therme',address:'Thermenplatz 9, 39012 Meran, Italien',desc:'Nur eine kurze Runde durch Lauben und Promenade, Eis und anschließend reserviertes Abschlussessen.',url:'https://www.merano-suedtirol.it'},{time:'Familienalternative',title:'Rainguthof Tierwelt',address:'Gampenpassstraße 52, 39010 Gfrill/Tisens, Italien',desc:'Nur statt der Meraner Altstadtrunde einplanen, nicht zusätzlich. Ziegen, Ponys und Lamas; Öffnung am Morgen prüfen.',url:'https://rainguthof.com/'}]},
+      {day:9,intro:'Ganztagesausflug: Die Plose ist besonders stark für ein vierjähriges Kind.',stops:[{time:'Vormittag–Nachmittag',title:'Plose Kabinenbahn & WoodyWalk',address:'Seilbahnstraße 17, 39042 St. Andrä bei Brixen, Italien',desc:'Gondel, Spielstationen, Wasserspiele und Hütteneinkehr. Wechselkleidung mitnehmen.',url:'https://www.plose.org/woodywalk/'},{time:'Rückweg',title:'Brixen Domplatz',address:'Domplatz, 39042 Brixen, Italien',desc:'Nur eine kurze Altstadtrunde mit Eis; bei müdem Kind direkt zurückfahren.',url:'https://www.brixen.org'}]},
+      {day:10,intro:'Stadt, Museum und der notwendige Vape-Einkauf lassen sich ohne zusätzliche Fernfahrt verbinden.',stops:[{time:'Vormittag',title:'Tiefgarage Bozen Mitte',address:'Josef-Mayr-Nusser-Straße, 39100 Bozen, Italien',desc:'Lauben, Obstmarkt und frühes Mittagessen.',url:'https://www.bolzano-bozen.it'},{time:'Nachmittag',title:'Südtiroler Archäologiemuseum',address:'Museumstraße 43, 39100 Bozen, Italien',desc:'Zeitfenster vorab prüfen; Family-Angebote und Öffnung kurz vor dem Besuch bestätigen.',url:'https://www.iceman.it/de'},{time:'Vor der Rückfahrt',title:'Tabaccheria Kolping – Vape-Einkauf',address:'Largo Adolph Kolping 1/G, 39100 Bozen, Italien',desc:'Führt E-Zigaretten und Zubehör. Für Nikotinshots vorher anrufen und nach „booster di nicotina“ oder „base nicotinata“ fragen; Verfügbarkeit ist nicht garantiert.',url:'https://www.tabaccheriakolping.it/'}]},
+      {day:11,intro:'Stadt, Museum und der notwendige Vape-Einkauf lassen sich ohne zusätzliche Fernfahrt verbinden.',stops:[{time:'Vormittag',title:'Tiefgarage Bozen Mitte',address:'Josef-Mayr-Nusser-Straße, 39100 Bozen, Italien',desc:'Lauben, Obstmarkt und frühes Mittagessen.',url:'https://www.bolzano-bozen.it'},{time:'Nachmittag',title:'Südtiroler Archäologiemuseum',address:'Museumstraße 43, 39100 Bozen, Italien',desc:'Zeitfenster vorab prüfen; Family-Angebote und Öffnung kurz vor dem Besuch bestätigen.',url:'https://www.iceman.it/de'},{time:'Vor der Rückfahrt',title:'Tabaccheria Kolping – Vape-Einkauf',address:'Largo Adolph Kolping 1/G, 39100 Bozen, Italien',desc:'Führt E-Zigaretten und Zubehör. Für Nikotinshots vorher anrufen und nach „booster di nicotina“ oder „base nicotinata“ fragen; Verfügbarkeit ist nicht garantiert.',url:'https://www.tabaccheriakolping.it/'}]},
       {day:12,intro:'Keine zusätzliche Sehenswürdigkeit einplanen.',stops:[{time:'Start',title:'Garni Osannahöfl',address:'St. Josef am See 35, 39052 Kaltern, Italien',desc:'Nach dem Frühstück ruhig packen und direkt heimfahren.',url:'https://www.kalterersee.com/en/lake-caldaro/caldaro/s-giuseppe-al-lago/hotel/osannahoefl/'}]}
     ];
     const dayMeta={
@@ -1050,6 +1063,7 @@ html[data-theme="dark"] #st-roadmap .nav-destination[aria-current="page"] .nav-i
     const grid = root.querySelector('#roadmap-grid');
     const suggestedCalendar=root.querySelector('#suggested-calendar');
     days.forEach((d,i) => {
+      if(i<4)return;
       const day=i+1;
       const dayIcon=/See|Baden|Riva/i.test(d[1])?'🏊':/Plose|Dolomiten|Mendel|Karersee|Natur/i.test(d[1])?'🏔️':/Verona|Brixen|Bozen|Trient|Meran|Füssen/i.test(d[1])?'🏘️':/Anreise|Abreise|Kaltern/i.test(d[1])?'🚗':'📍';
 
@@ -1152,13 +1166,13 @@ html[data-theme="dark"] #st-roadmap .nav-destination[aria-current="page"] .nav-i
       2:'Kurzer Blick auf Schloss Neuschwanstein und die Marienbrücke, danach Weiterfahrt nach Kaltern und Check-in am Kalterer See.',
       3:'Vormittags mit der Mendelbahn auf den Berg; nachmittags Baden am See oder alternativ ein kindgerechtes Pferdeerlebnis.',
       4:'Familientag auf der Plose mit Gondelfahrt und WoodyWalk; auf dem Rückweg kurze Pause in der Brixner Altstadt.',
-      5:'Ruhiger Ferragosto-Tag am Kalterer See mit viel Erholung und einem kurzen Spaziergang durch Kaltern am späten Nachmittag.',
-      6:'Entspannter Tagesausflug nach Malcesine mit Altstadt, Hafen und Eis; Verona bleibt als längere Kultur-Alternative verfügbar.',
-      7:'Bozen mit Altstadt, Obstmarkt und Ötzi-Museum; vor der Rückfahrt ist ein kurzer Einkauf eingeplant.',
-      8:'Früher Ausflug zum Karersee mit kurzer Seerunde; anschließend ein überschaubarer Familienabschnitt bei Latemar.Natura.',
-      9:'Schlechtwetter- oder Hitzetag im MUSE in Trient, ergänzt durch eine kurze Runde in der Altstadt.',
-      10:'Vormittags Besuch des Varone-Wasserfalls, danach entspannter Nachmittag an der Promenade von Riva del Garda.',
-      11:'Vormittags die Gärten von Schloss Trauttmansdorff, später eine kurze Runde durch Meran; der Rainguthof ist die Familienalternative.',
+      5:'Ganzer Tag am Kalterer See mit viel Erholung; bei aufziehendem Gewitter frühzeitig aus dem Wasser.',
+      6:'Bozen mit Altstadt, Obstmarkt und Ötzi-Museum als flexibler Tag bei wechselhaftem Wetter.',
+      7:'MUSE in Trient als wetterfester Schwerpunkt; die Altstadt bleibt bewusst kurz.',
+      8:'Früher Dolomiten-Ausflug zum Karersee mit kurzem Latemar.Natura-Abschnitt – der priorisierte Sichttag.',
+      9:'Familientag auf der Plose mit Gondelfahrt und WoodyWalk; anschließend kurze Brixen-Runde.',
+      10:'Malcesine mit Altstadt, Hafen und Gardasee; Verona bleibt als längere Kultur-Alternative verfügbar.',
+      11:'Varone-Wasserfall am Vormittag, danach entspannter Nachmittag in Riva del Garda.',
       12:'Nach dem Frühstück in Ruhe packen und ohne weiteren Programmpunkt direkt nach Essen zurückfahren.'
     });
 
@@ -1379,12 +1393,12 @@ html[data-theme="dark"] #st-roadmap .nav-destination[aria-current="page"] .nav-i
       3:[['Preiswert(er)','Restaurant & Pizzeria Geier','St. Josef am See 12, 39052 Kaltern'],['Gehoben','Panholzer','St. Josef am See 8, 39052 Kaltern']],
       4:[['Preiswert(er)','Plosestodl','Seilbahnstraße 17, 39042 St. Andrä/Brixen'],['Gehoben','Rossalm','Kreuztal 80, 39042 Brixen']],
       5:[['Preiswert(er)','Goldener Stern','Andreas-Hofer-Straße 28, 39052 Kaltern'],['Gehoben','Seehof Keller','St. Josef am See 60, 39052 Kaltern']],
-      6:[['Preiswert(er)','Pizzeria da Salvatore Verona','Piazza San Tomaso 6, 37129 Verona'],['Gehoben','Ristorante Maffei','Piazza Erbe 38, 37121 Verona'],['Malcesine preiswert(er)','Ristorante Caminetto','Via Gardesana 59, 37018 Malcesine'],['Malcesine gehoben','Vecchia Malcesine','Via Pisort 6, 37018 Malcesine'],['Brescia preiswert(er)','Trattoria Rigoletto','Via Fratelli Bronzetti 22, 25121 Brescia'],['Brescia gehoben','Osteria Al Bianchi','Via Gasparo da Salò 32, 25122 Brescia']],
-      7:[['Preiswert(er)','Pizzeria Trianon','Via S. Quirino 5, 39100 Bozen'],['Gehoben','Restaurant Laurin','Laurinstraße 4, 39100 Bozen']],
+      6:[['Preiswert(er)','Pizzeria Trianon','Via S. Quirino 5, 39100 Bozen'],['Gehoben','Restaurant Laurin','Laurinstraße 4, 39100 Bozen']],
+      7:[['Preiswert(er)','Forsterbräu Trento','Via Paolo Oss Mazzurana 38, 38122 Trento'],['Gehoben','Scrigno del Duomo','Piazza Duomo 29, 38122 Trento']],
       8:[['Preiswert(er)','Hennenstall','Karerseestraße 134, 39056 Welschnofen'],['Gehoben','Franzin Alm','Via Carezza 151, 39056 Welschnofen']],
-      9:[['Preiswert(er)','Forsterbräu Trento','Via Paolo Oss Mazzurana 38, 38122 Trento'],['Gehoben','Scrigno del Duomo','Piazza Duomo 29, 38122 Trento']],
-      10:[['Preiswert(er)','Panem Riva','Viale Roma 11, 38066 Riva del Garda'],['Gehoben','L’Ora Restaurant','Via Brione 1, 38066 Riva del Garda']],
-      11:[['Preiswert(er)','Forsterbräu Meran','Freiheitsstraße 90, 39012 Meran'],['Gehoben','Restaurant Sissi','Galileistraße 44, 39012 Meran']],
+      9:[['Preiswert(er)','Plosestodl','Seilbahnstraße 17, 39042 St. Andrä/Brixen'],['Gehoben','Rossalm','Kreuztal 80, 39042 Brixen']],
+      10:[['Preiswert(er)','Pizzeria da Salvatore Verona','Piazza San Tomaso 6, 37129 Verona'],['Gehoben','Ristorante Maffei','Piazza Erbe 38, 37121 Verona'],['Malcesine preiswert(er)','Ristorante Caminetto','Via Gardesana 59, 37018 Malcesine'],['Malcesine gehoben','Vecchia Malcesine','Via Pisort 6, 37018 Malcesine'],['Brescia preiswert(er)','Trattoria Rigoletto','Via Fratelli Bronzetti 22, 25121 Brescia'],['Brescia gehoben','Osteria Al Bianchi','Via Gasparo da Salò 32, 25122 Brescia']],
+      11:[['Preiswert(er)','Panem Riva','Viale Roma 11, 38066 Riva del Garda'],['Gehoben','L’Ora Restaurant','Via Brione 1, 38066 Riva del Garda']],
       12:[['Preiswert(er)','Zur Sabine','Andreas-Hofer-Straße 7, 39052 Kaltern'],['Gehoben','Panholzer','St. Josef am See 8, 39052 Kaltern']]
     };
     const dayTodos={
@@ -1393,12 +1407,12 @@ html[data-theme="dark"] #st-roadmap .nav-destination[aria-current="page"] .nav-i
       3:[['Mendelbahn prüfen','Betrieb und Bergwetter am Morgen kontrollieren.'],['Pferdeoption anfragen','Schnuppertermin oder Tramin-Kutschenfahrt spätestens am Vortag bestätigen lassen.'],['Badetasche mitnehmen','Badesachen, Sonnenhut und Wasser direkt morgens ins Auto legen.'],['Abendessen','Geier als preiswerte Option; Panholzer nur nach Reservierung.']],
       4:[['Bergwetter prüfen','Bei Gewitterneigung Plose gegen Trient/MUSE tauschen.'],['Früh starten','Spätestens gegen 08:00 Uhr ab Kaltern losfahren.'],['Wechselkleidung einpacken','Am WoodyWalk gibt es Wasser- und Spielstationen.'],['Bergbahnticket','Öffnung, Preis und eventuelle Onlinevorteile vor Abfahrt prüfen.']],
       5:[['Ferragosto-Vorrat','Lebensmittel spätestens am 14.08. einkaufen; kleinere Geschäfte können geschlossen sein.'],['Früh zum See','Möglichst vor 10 Uhr baden und die Hauptandrangzeit meiden.'],['Abendessen reservieren','Für den Feiertag nicht auf spontane Plätze verlassen.'],['Bei Regen','Kellerei Kaltern statt See; keine Fernfahrt an einem Feiertag mit vollen Straßen und Parkhäusern.']],
-      6:[['Malcesine als Standard','Nur bei ausdrücklichem Kulturwunsch nach Verona oder Brescia wechseln – niemals zwei Orte kombinieren.'],['Früh starten','Malcesine möglichst vor dem stärksten Gardasee-Verkehr erreichen.'],['Kinderpause einplanen','Hafen, Eis und einen kurzen Spielplatz- oder Badestopp als feste Pause nutzen.'],['Verona oder Brescia nur alternativ','Außerhalb der ZTL bzw. des Zentrums parken und eine lange Mittagspause einplanen; Brescia ist die deutlich weitere Fahrt.']],
-      7:[['Ötzi-Zeitfenster','Reservierung und aktuelle Familienangebote vorab prüfen.'],['Vape-Shop anrufen','Vorher unter +39 0471 301120 fragen, ob Nikotinshots beziehungsweise „booster di nicotina“ verfügbar sind.'],['Auto stehen lassen','Vom Parkhaus aus Altstadt, Museum und Einkauf zu Fuß verbinden.'],['Kinderpause','Nach etwa einer Stunde Museum bewusst abbrechen oder pausieren.']],
+      6:[['Ötzi-Zeitfenster','Reservierung und aktuelle Familienangebote vorab prüfen.'],['Vape-Shop anrufen','Vorher unter +39 0471 301120 fragen, ob Nikotinshots beziehungsweise „booster di nicotina“ verfügbar sind.'],['Auto stehen lassen','Vom Parkhaus aus Altstadt, Museum und Einkauf zu Fuß verbinden.'],['Kinderpause','Nach etwa einer Stunde Museum bewusst abbrechen oder pausieren.']],
+      7:[['MUSE-Tickets','Familienticket und Maxi Ooh! vorab prüfen beziehungsweise buchen.'],['Museum priorisieren','Für das MUSE ausreichend Zeit lassen; Altstadt nur kurz ergänzen.'],['Regenplan aktivieren','Diesen Tag bevorzugt bei Regen oder großer Hitze einsetzen beziehungsweise mit dem Dolomitentag tauschen.'],['Parkadresse speichern','MUSE-Parkmöglichkeit vorab in der Navigation sichern.']],
       8:[['Sicht und Wetter prüfen','Nur bei stabiler Fernsicht zum Karersee fahren; sonst mit Trient/MUSE tauschen.'],['Spätestens 08:00 starten','Vor den großen Besuchergruppen am See sein.'],['Bergkleidung','Auch bei Hitze leichte Jacke und feste Schuhe einpacken.'],['Nachmittag bewusst kurz','Latemar.Natura nach 60–90 Minuten beenden und keinen Zusatzstopp anhängen.']],
-      9:[['MUSE-Tickets','Familienticket und Maxi Ooh! vorab prüfen beziehungsweise buchen.'],['Museum priorisieren','Für das MUSE ausreichend Zeit lassen; Altstadt nur kurz ergänzen.'],['Regenplan aktivieren','Diesen Tag bevorzugt bei Regen oder großer Hitze einsetzen beziehungsweise mit dem Dolomitentag tauschen.'],['Parkadresse speichern','MUSE-Parkmöglichkeit vorab in der Navigation sichern.']],
-      10:[['Regenjacken einpacken','Am Varone-Wasserfall wird es auch bei Sonne nass und rutschig.'],['Tickets vor Ort','Eintritt wird vor Ort gekauft; früh ankommen.'],['Badetasche','Für den Nachmittag in Riva Badesachen und Handtücher mitnehmen.'],['Keine Zusatzfahrt','Malcesine an diesem Tag ausdrücklich nicht mehr anhängen.']],
-      11:[['Trauttmansdorff-Tickets','Eintritt und Parkplatz vorab prüfen; die Gärten am Vormittag besuchen.'],['Abschlussessen reservieren','Preiswerte und gehobene Variante spätestens einige Tage vorher festlegen.'],['Meran kurz halten','Am späten Nachmittag nur Lauben, Promenade und Eis einplanen.'],['Rainguthof nur alternativ','Tierwelt ausschließlich statt der Altstadtrunde wählen, nicht zusätzlich.']],
+      9:[['Bergwetter prüfen','Bei Gewitterneigung Plose gegen Trient/MUSE tauschen.'],['Früh starten','Spätestens gegen 08:00 Uhr ab Kaltern losfahren.'],['Wechselkleidung einpacken','Am WoodyWalk gibt es Wasser- und Spielstationen.'],['Bergbahnticket','Öffnung, Preis und eventuelle Onlinevorteile vor Abfahrt prüfen.']],
+      10:[['Malcesine als Standard','Nur bei ausdrücklichem Kulturwunsch nach Verona oder Brescia wechseln – niemals zwei Orte kombinieren.'],['Früh starten','Malcesine möglichst vor dem stärksten Gardasee-Verkehr erreichen.'],['Kinderpause einplanen','Hafen, Eis und einen kurzen Spielplatz- oder Badestopp als feste Pause nutzen.'],['Verona oder Brescia nur alternativ','Außerhalb der ZTL bzw. des Zentrums parken und eine lange Mittagspause einplanen; Brescia ist die deutlich weitere Fahrt.']],
+      11:[['Regenjacken einpacken','Am Varone-Wasserfall wird es auch bei Sonne nass und rutschig.'],['Tickets vor Ort','Eintritt wird vor Ort gekauft; früh ankommen.'],['Badetasche','Für den Nachmittag in Riva Badesachen und Handtücher mitnehmen.'],['Keine Zusatzfahrt','Malcesine an diesem Tag ausdrücklich nicht mehr anhängen.']],
       12:[['Check-out-Zeit','Am Vorabend bezahlen, packen und Abfahrtszeit bestätigen.'],['Maut und Route','Verkehr am Brenner sowie österreichische Mautprodukte prüfen.'],['Getränke und Snacks','Für die Heimfahrt direkt nach dem Frühstück eindecken.'],['Zimmerkontrolle','Ladegeräte, Kinderzeug, Badekleidung und Dokumente kontrollieren.']]
     };
     function showDay(day,openMobile=true){
@@ -2820,10 +2834,6 @@ function removeHomeDayContent(){
  }
 
  const tripDateMap=[
-  {iso:'2026-08-11',label:'11.8.',day:1},
-  {iso:'2026-08-12',label:'12.8.',day:2},
-  {iso:'2026-08-13',label:'13.8.',day:3},
-  {iso:'2026-08-14',label:'14.8.',day:4},
   {iso:'2026-08-15',label:'15.8.',day:5},
   {iso:'2026-08-16',label:'16.8.',day:6},
   {iso:'2026-08-17',label:'17.8.',day:7},
